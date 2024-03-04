@@ -1,0 +1,109 @@
+body{
+    background-color: #EFEFEF;
+    margin: 0;
+    margin-top: 120px;
+}
+
+
+header {
+    padding: 35px;
+    text-align: center;
+    background: #276E90;
+    color: #CECFC9;
+    font-size: 40px;
+    font-weight: bold;
+    position: fixed; /*El header se mantiene siempre visible en la parte superior de la página*/
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#samba{
+    width: 80px;
+    height: auto;
+    top: 5px;
+    left: 10px;
+    position: fixed;
+    transition: all 0.2s ease; /*La transición se realizará de forma progresiva a la ida y a la vuelta*/
+}
+
+/*Cuando el ratón pase por encima de la imagen con la id "samba" se aumentará su tamaño a 1.2*/
+#samba:hover{
+    transform: scale(1.2);
+}
+
+
+.indice{
+    margin-left: 600px;
+    font-family: Arial, sans-serif;
+    font-size: large;
+    line-height: 1.5;
+}
+
+.enlace{
+    color: #0A3143;
+    font-weight: bold;
+}
+
+.images{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 752px;
+    height: 357px;
+    border-radius: 10px;/*Los bordes de la imagen estarán redondeados en las esquinas*/
+    border: 2px solid #333;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 40px;
+    color: #276E90;
+    -webkit-text-stroke: 1.5px #333;/*Borde negro alrededor de las letras del título*/
+    margin-top: -117px;
+    padding-top: 117px;/*Con esto al clickar en el link al título, tendrá suficiente separación para que el encabezado no tape el título*/
+}
+
+/*El texto en la página tendrá la fuente Nunito y estará justificado*/
+p{
+    margin-left: 600px;
+    margin-right: 600px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    text-align: justify;
+    font-size: large;
+    line-height: 1.5;
+}
+
+/*El footer utiliza un flex*/
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.footer-section {
+    color: white;
+    display: inline-block;
+    width: 80px;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    
+    
+}
+/*Cuando se pase el ratón por encima del alguno de los botones del footer, los colores se invertirán*/
+.footer-section:hover{
+    background-color: #ccc;
+    color: #333;
+  }
+
+.footer-section h3 {
+    font-size: 1.2em;
+}

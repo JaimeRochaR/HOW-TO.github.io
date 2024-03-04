@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Cómo compartir archivos con Samba</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+        
+        <!--Trabajo realizado por Jaime Rocha Rodríguez-->
+    </head>
+    <body>
+        <!--DIV para crear un encabezado en forma de título-->
+        <header>HOW-TO: Compartir archivos con Samba<a href="index.html"><img id="samba" src="samba.png"></a></header>
+        <p>
+            Samba es una herramienta muy versátil con la que crear un entorno de red unificado que satisface las necesidades tanto de usuarios de Linux como de Windows.<br>
+            Hoy echaremos un vistazo a los pasos a seguir para compartir carpetas de Linux a Windows usando esta herramienta.<br><br>
+            Siga leyendo para aprender de cero o si quieres saltar a una sección específica del tutorial haga click en el link correspondiente:<br>
+        
+            <!--Índice con hiperenlaces a las secciones del howto-->
+            <ul class="indice">
+                <li><a class="enlace" href="#instalar">Insalación de VirtualBox</a></li>
+                <li><a class="enlace" href="#windows">Preparación e instalación de Windows</a></li>
+                <li><a class="enlace" href="#linux">Preparación e instalación de Linux</a></li>
+                <li><a class="enlace" href="#acceso">Acceso a archivos desde ambos sistemas</a></li>
+            </ul><br>
+            <img class="images" src="linuxtowindows.jpg" alt="imagen de transferencia de datos Linux a Windows">
+            <br>
+            <!--Los H1 con la clase "titulo" marcarán el comienzo de las secciones, pudiendo acceder a ellas con el índice-->
+            <h1 class="titulo" id="instalar">Instalación de VirtualBox</h1>
+        </p>
+        <p>
+           Comenzamos descargando la última versión de <a href="https://www.virtualbox.org/">VirtualBox</a> para nuestra plataforma teniendo en cuenta la versión de nuestro sistema operativo. 
+           Una vez descargado debemos proceder con la instalación y configuración del programa.
+        </p>
+           <img class="images" src="Captura1.PNG" alt="VirtualBox"><br>
+        <p>
+            Una vez iniciado el VirtualBox, debemos crear la red local en la que vamos a compartir archivos. Esto es muy sencillo, solo debemos presionar CTRL+H y pulsar en "crear". 
+            De esta forma podremos conectar nuestra máquina virtual de Linux y Windows a la misma red.
+        </p>
+        <h1 class="titulo" id="windows">Preparación e instalación de Windows</h1>
+        <p>
+            Ahora procederemos a la descarga de la ISO de <a href="https://www.microsoft.com/es-es/software-download/windows10">Windows</a>, una vez descargada regresamos a VirtualBox 
+            y hacemos click en el botón "Nueva", al hacerlo se abrirá la pestaña de creación de máquina virtual.
+            Una vez aquí debemos ponerle un nombre a nuestra máquina, seleccionar su ruta y elegir la imagen ISO, al hacer click en "otro" iremos a nuestras descargas en el explorador de archivos 
+            e iremos a donde hayamos descargado Windows10, lo seleccionamos y le damos a siguiente.
+        </p>
+        <img class="images" src="Captura3.PNG" alt="creacion maquina virtual windows">
+        <p>
+            Ponemos el nombre de usuario y contraseña que deseemos y pegamos nuestra clave de producto.
+            Después le daremos el hardware y disco duro que deseemos y finalizaremos el proceso de creación. Al abrir nuestra recien creada máquina virtual tendremos delante nuestra el escritorio de Windows10.
+        </p> 
+        <img class="images" src="Windows.jpg" alt="escritorio predeterminado de Windows10">
+        <p>
+            Una vez aquí, se deben realizar las actualizaciones necesarias. Después diríjase a la barra de búsqueda y escriba: <i>administrar configuración avanzada de uso compartido</i>.
+            Haga click en el primer resultado, active ambas opciones como se ve en la imagen y guarde los cambios.
+        </p>
+        <img class="images" src="Captura4.PNG" alt="Configuración avanzada de uso compartido">
+        <p>
+            Acto seguido, volvemos a la barrra de tareas y escribimos <i>Firewall de Windows Defender</i> y seleccionamos el primer resultado.
+            Hacemos click en <i>Configuración avanzada</i>, después en <i>Reglas de entrada</i> y activamos todas las reglas de <i>Archivos e impresoras compartidos</i>. 
+            Hacemos lo mismo en <i>Reglas de salida</i>.
+        </p>
+        <img class="images" src="Captura5.PNG" alt="Archivos e impresoras compartidos">
+        <p>
+            Con esto finaliza la preparación de Windows.
+        </p>
+        <h1 class="titulo" id="linux">Preparación e instalación de Linux</h1>
+        <p>
+            Nuevamente descargamos la ISO de <a href="https://ubuntu.com/download/desktop">Linux</a>, 
+            el proceso para la creación de la máquina virtual es muy parecida a la de Windows. En VMWare hacemos click en "Nueva", ponemos el nombre que queramos, seleccionamos la ruta y la imagen ISO que nos hemos descargado anteriormente y hacemos click en siguiente.
+        </p>
+        <img class="images" src="Captura8.PNG" alt="creacion maquina virtual Linux">
+        <p>
+            Escribimos el nombre para nuestra máquina virtual y establecemos la contraseña que queramos usar, es importante acordarse de esta puesto que la necesitaremos más adelante. Le damos a siguiente y establecemos el hardware y disco duro que queramos darle a la máquina.
+            Finalizamos el proceso de instalación y abrimos nuestra máquina virtual de Linux. Automaticamente comenzará la instalación, hay que tener en cuenta que puede durar varios minutos.
+            Una vez termine Linux se reiniciará, y entonces tendremos el escritorio delante. 
+        </p>
+        <img class="images" src="Captura9.PNG" alt="escritorio de Linux">
+        <p>
+            Una vez en Linux, abriremos la terminal y nos cambiamos a root escribiendo "su", pulsando enter y poniendo la contraseña que establecimos con anterioridad.
+            Comprobaremos si nuestro sistema operativo está actualizado con los siguientes comandos: "apt upgrade" y "apt update". Cuando nos pida confirmacón, pulsaremos la tecla "Y" en nuestro teclado para finalizar.
+            <br>A continuación pueden ver en este vídeo toda la descarga y configuración de Samba en Linux:
+        </p>
+        
+        <!--Iframe con el que enlazamos un vídeo de youtube-->
+        <iframe class="images" width="560" height="315" src="https://www.youtube.com/embed/5EPtLqG6L88?si=4LZ4aZkgVqE9xTat" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p>
+            Antes de pasar de nuevo a Windows por último debemos reiniciar el proceso de Samba para que se apliquen todas las configuraciones. Para ello, escribimos "systemctl restart smbd.service" en la terminal de Linux.
+        </p>
+        <h1 class="titulo" id="acceso">Acceso a archivos desde ambos sistemas</h1>
+        <p>
+            
+            Una vez tenemos Linux y Samba configurado volvemos a nuestra máquina virtual de Windows y escribimos en la barra de búsqueda "CMD" y pulsamos enter para abrir la consola de comandos de Windows.
+            Una vez abierta escribiremos ping y la ip que hemos comprobado en Linux. De esta forma comprobaremos que existe conectividad entre las dos máquinas.
+            
+        </p>
+
+        <img class="images" src="Captura6.PNG" alt ="ping">
+
+        <p>
+            Finalmente, escribimos en la barra de búsqueda "ejecutar" pulsamos enter y entonces escribimos "\\nuestraipdelinux\compartida", hacemos click en abrir y escribimos la contraseña establecida en Linux para acceder a la carpeta compartida entre Linux y Windows
+        </p>
+
+        <img class="images" src="Captura7.PNG" alt ="ejecutar y abrir compartida">
+        <br>
+
+        <!--Footer con algunos enlaces de interés-->
+
+        <footer>
+            <a href="index.html">
+                <div class="footer-section">
+                    <h3>Inicio</h3>
+                
+                </div>
+            </a>
+            <a href="https://www.youtube.com/@JaimeRochaRodriguez">
+                <div class="footer-section">
+                    <h3>Videos</h3>
+                </div>
+            </a>
+            <a href="https://github.com/JaimeRochaR">
+                <div class="footer-section">
+                    <h3>Otros</h3>
+                </div>
+            </a>
+        </footer>
+    </body>
+</html>
